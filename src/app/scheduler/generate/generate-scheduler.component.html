@@ -1,0 +1,74 @@
+<div class="main-content" style="margin-top: 40px;padding: 0px 15px 0 15px;min-height: calc(93vh - 123px);">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <mat-toolbar color="primary" style="justify-content: space-between;">
+              <span>Generación de horarios</span>
+              <span class="spacer"></span>
+              <button (click)="openCalendar()" mat-raised-button color="warn">Generar Horarios</button>
+            </mat-toolbar>
+            
+            <div class="table-container m-3">
+              <mat-form-field appearance="outline" class="search-field">
+                <mat-label>Buscar</mat-label>
+                <input matInput placeholder="Ingrese un valor a buscar" />
+              </mat-form-field>
+            
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <!-- Columnas -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> NRO </th>
+                  <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="period">
+                  <th mat-header-cell *matHeaderCellDef> PERIODO </th>
+                  <td mat-cell *matCellDef="let element">{{ element.period }}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="sede">
+                  <th mat-header-cell *matHeaderCellDef> SEDE </th>
+                  <td mat-cell *matCellDef="let element">{{ element.sede }}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="rDuras">
+                  <th mat-header-cell *matHeaderCellDef> R. DURAS </th>
+                  <td mat-cell *matCellDef="let element">{{ element.rDuras }}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="rBlandas">
+                  <th mat-header-cell *matHeaderCellDef> R. BLANDAS </th>
+                  <td mat-cell *matCellDef="let element">{{ element.rBlandas }}</td>
+                </ng-container>
+            
+                <ng-container matColumnDef="evaluacion">
+                  <th mat-header-cell *matHeaderCellDef> EVALUACIÓN </th>
+                  <td mat-cell *matCellDef="let element">
+                    <span [ngStyle]="{'color': getColor(element.evaluacion)}">
+                      {{ element.evaluacion }}%
+                    </span>
+                  </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef> DETALLE </th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="accent"><mat-icon>search</mat-icon></button>
+                  </td>
+                </ng-container>
+            
+                <!-- Header y Rows -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+
+          <mat-paginator [pageSize]="9" [pageSizeOptions]="[9]" showFirstLastButtons></mat-paginator>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

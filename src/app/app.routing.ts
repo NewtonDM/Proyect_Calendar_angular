@@ -18,6 +18,9 @@ export const AppRoutes: Routes = [
     }, {
         path: 'components',
         loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
+    },{
+        path: 'scheduler',
+        loadChildren: () => import('./scheduler/scheduler.module').then(m => m.SchedulerModule)
     }, {
         path: 'forms',
         loadChildren: () => import('./forms/forms.module').then(m => m.Forms)

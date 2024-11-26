@@ -7,11 +7,11 @@ import PerfectScrollbar from 'perfect-scrollbar';
 declare const $: any;
 
 @Component({
-    selector: 'app-calendar-cmp',
-    templateUrl: 'calendar.component.html'
+    selector: 'app-calendar-copy-cmp',
+    templateUrl: 'calendar.component-copy.html'
 })
 
-export class CalendarComponent implements OnInit {
+export class CalendarCopyComponent implements OnInit {
     ngOnInit() {
         const $calendar = $('#fullCalendar');
 
@@ -33,7 +33,6 @@ export class CalendarComponent implements OnInit {
                 center: 'month, agendaWeek, agendaDay',
                 right: 'prev, next, today'
             },
-            defaultView: "agendaWeek",
             defaultDate: today,
             selectable: true,
             selectHelper: true,

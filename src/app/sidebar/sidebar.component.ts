@@ -26,7 +26,7 @@ export const ROUTES: RouteInfo[] = [{
         title: 'Dashboard',
         type: 'link',
         icontype: 'dashboard'
-    },{
+    }/*{
         path: '/components',
         title: 'Components',
         type: 'sub',
@@ -41,7 +41,18 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'icons', title: 'Icons', ab:'I'},
             {path: 'typography', title: 'Typography', ab:'T'}
         ]
-    },{
+    }*/,
+    {
+        path: '/scheduler',
+        title: 'Simulador',
+        type: 'sub',
+        icontype: 'timeline',
+        collapse: 'scheduler',
+        children: [
+            {path: 'generate', title: 'Generar Horarios', ab: 'GH'}
+        ]
+    }/*
+    ,{
         path: '/forms',
         title: 'Forms',
         type: 'sub',
@@ -87,12 +98,12 @@ export const ROUTES: RouteInfo[] = [{
         type: 'link',
         icontype: 'timeline'
 
-    },{
+    }*/,{
         path: '/calendar',
         title: 'Calendar',
         type: 'link',
         icontype: 'date_range'
-    },{
+    }/*,{
         path: '/pages',
         title: 'Pages',
         type: 'sub',
@@ -106,7 +117,7 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'lock', title: 'Lock Screen Page', ab:'LSP'},
             {path: 'user', title: 'User Page', ab:'UP'}
         ]
-    }
+    }*/
 ];
 @Component({
     selector: 'app-sidebar-cmp',

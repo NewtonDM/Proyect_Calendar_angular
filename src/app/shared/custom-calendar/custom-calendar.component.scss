@@ -1,0 +1,70 @@
+/* calendar.component.css */
+.calendar {
+    display: grid;
+    // grid-template-columns: 100px repeat(7, 1fr); /* 100px para las horas y 7 columnas para los días */
+    // grid-template-rows: 40px repeat(24, 1fr); /* 40px para los días de la semana, luego 1fr para las horas */
+    gap: 1px;
+    border: 1px solid #ccc;
+    position: relative;
+  }
+  
+  .calendar-header {
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr); /* 100px para las horas, resto para los días */
+    background-color: #f0f0f0;
+  }
+  
+  .calendar-header div {
+    text-align: center;
+    padding: 10px;
+    background-color: #e0e0e0;
+    font-weight: bold;
+    border: 1px solid #ccc;
+  }
+  
+  .calendar-body {
+    display: grid;
+    // grid-template-columns: 100px repeat(7, 1fr); /* 100px para las horas, resto para los días */
+    // grid-template-rows: 100px repeat(24, 1fr); /* 24 filas para las horas */
+    gap: 1px;
+    position: relative;
+  }
+  
+  .calendar-row {
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr); /* 100px para la hora y 7 columnas para los días */
+  }
+  
+  .calendar-time {
+    padding: 10px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  
+  .calendar-cell {
+    border: 1px solid #ddd;
+    min-height: 50px;
+    position: relative;
+    cursor: pointer;
+    background-color: #fafafa;
+  }
+  
+  /* Estilo para los eventos */
+  .calendar-event {
+    background-color: #4caf50; /* Color de fondo verde */
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute; /* Posiciona el evento sobre la celda */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  /* Agregar algo de sombra a las celdas y eventos */
+  .calendar-cell:hover,
+  .calendar-event:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

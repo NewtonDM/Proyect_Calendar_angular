@@ -1,0 +1,26 @@
+<div class="calendar">
+    <div class="calendar-header">
+      <div *ngFor="let day of weekDays">{{ day }}</div> <!-- Días en la cabecera -->
+    </div>
+  
+    <div class="calendar-body">
+      <div *ngFor="let hour of hours" class="calendar-row">
+        <div class="calendar-time">{{ hour }}</div> <!-- Horas a la izquierda -->
+  
+        <!-- Celdas del calendario (estructura base) -->
+        <div *ngFor="let day of weekDays.slice(1)" class="calendar-cell" 
+             [attr.data-hour]="hour" [attr.data-day]="day">
+        </div>
+      </div>
+  
+      <!-- Bloque para mostrar los eventos sobre las celdas -->
+      <div *ngFor="let event of events"
+           class="calendar-event" 
+           [style.gridColumnStart]="weekDays.indexOf(event.day) + 2" 
+           [style.gridRowStart]="hours.indexOf(event.startHour) + 2" 
+           [style.gridRowEnd]="hours.indexOf(event.startHour) + 2 + event.duration">
+        {{ event.title }}
+      </div>
+    </div>
+  </div>
+  
