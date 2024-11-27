@@ -1,0 +1,23 @@
+.modal-content {
+    padding: 16px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+  
+  .schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .no-schedules {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+  }
+  

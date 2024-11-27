@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { CourseTableModalComponent } from "src/app/modal/course-table-modal/course-table-modal.component";
+import { ScheduleModalComponent } from "src/app/modal/schedule-modal/schedule-modal.component";
 
 // Ejemplo de datos para la tabla
 const ELEMENT_DATA = [
@@ -54,5 +55,19 @@ export class TeachersComponent implements OnInit {
           console.log('Datos devueltos del modal:', result);
         }
       });
+  }
+
+  addSchedule(element: any): void {
+    const dialogRef = this.dialog.open(ScheduleModalComponent, {
+      width: '400px',
+      data: { element }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Horario agregado:', result);
+        // Lógica para actualizar la tabla o datos
+      }
+    });
   }
 }

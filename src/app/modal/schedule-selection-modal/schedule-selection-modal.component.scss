@@ -1,0 +1,16 @@
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  mat-list {
+    margin: 0;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+  }
+  

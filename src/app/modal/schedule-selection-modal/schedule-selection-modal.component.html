@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Seleccionar Horarios</h2>
+<div mat-dialog-content class="modal-content">
+  <mat-list role="list">
+    <mat-list-item *ngFor="let schedule of availableSchedules">
+      <div class="schedule-item">
+        <span>{{schedule.day}} - {{schedule.time}}</span>
+        <button mat-icon-button 
+                [color]="isSelected(schedule) ? 'accent' : 'primary'" 
+                (click)="toggleSchedule(schedule)">
+          <mat-icon>{{ isSelected(schedule) ? 'check_circle' : 'add_circle_outline' }}</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button (click)="onSave()">Guardar</button>
+</div>

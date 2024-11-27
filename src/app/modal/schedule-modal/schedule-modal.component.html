@@ -1,0 +1,44 @@
+<h2 class="modal-title">Seleccionar Horarios</h2>
+<div mat-dialog-content class="modal-content">
+  <div class="controls">
+    <button mat-icon-button color="primary" (click)="saveSchedules()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="clearSelection()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Lista de horarios disponibles -->
+  <button mat-raised-button color="primary" (click)="openScheduleModal()">
+    Seleccionar Horarios
+  </button>
+
+  <!-- Tabla de horarios seleccionados -->
+  <table mat-table [dataSource]="selectedSchedules" class="mat-elevation-z8" *ngIf="selectedSchedules.length > 0">
+    <ng-container matColumnDef="day">
+      <th mat-header-cell *matHeaderCellDef> Día </th>
+      <td mat-cell *matCellDef="let schedule"> {{schedule.day}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Hora </th>
+      <td mat-cell *matCellDef="let schedule"> {{schedule.time}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let schedule">
+        <button mat-icon-button color="warn" (click)="removeSchedule(schedule)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['day', 'time', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['day', 'time', 'actions'];"></tr>
+  </table>
+
+  <!-- Mensaje cuando no hay horarios seleccionados -->
+  <p *ngIf="selectedSchedules.length === 0" class="no-schedules">No hay horarios seleccionados.</p>
+</div>
