@@ -1,14 +1,25 @@
 <div class="main-content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-10 ml-auto mr-auto">
-          <div class="card card-calendar">
-            <div class="card-body px-0">
-             <app-custom-calendar></app-custom-calendar>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-calendar">
+          <div class="card-body px-0">
+            <!-- Título del salón y flechas de navegación -->
+            <div class="calendar-header">
+              <button class="nav-button" [disabled]="(currentSalon == null ? true : false)" (click)="prevSalon()" mat-icon-button>
+                <span class="material-icons">arrow_back</span>
+              </button>
+              <h3>{{ currentSalon?.salon || 'No hay datos' }}</h3>
+              <button class="nav-button"  [disabled]="(currentSalon == null ? true : false)" (click)="nextSalon()" mat-icon-button>
+                <span class="material-icons">arrow_forward</span>
+              </button>
             </div>
+
+            <!-- Pasar los eventos del salón actual al calendario -->
+            <app-custom-calendar [events]="currentSalon?.dataCalendar || []"></app-custom-calendar>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

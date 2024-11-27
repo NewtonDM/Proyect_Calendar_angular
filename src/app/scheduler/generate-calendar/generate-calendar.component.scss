@@ -1,1 +1,37 @@
-.calendar-container { height: 600px; }
+/* Estilo para la cabecera del calendario */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  /* Botón con icono de flecha */
+  .nav-button {
+    background: transparent;
+    border: none;
+    font-size: 2rem; /* Tamaño de los íconos */
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .nav-button:focus {
+    outline: none;
+    transform: scale(1.2);
+    color: #4caf50; /* Color de enfoque (verde) */
+  }
+  
+  .nav-button:hover {
+    color: #4caf50; /* Color en hover */
+  }
+  
+  .nav-button:active {
+    color: #388e3c; /* Color de clic */
+  }
+  
+  /* Título */
+  .calendar-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  

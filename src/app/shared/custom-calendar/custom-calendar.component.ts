@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DataCalendar } from 'src/app/models/data-calendar.model';
 
 @Component({
   selector: 'app-custom-calendar',
@@ -6,20 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./custom-calendar.component.scss']
 })
 export class CustomCalendarComponent {
-  // Días en español
-  weekDays: string[] = ['Horas', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-  hours: string[] = Array.from({ length: 24 }, (_, i) => `${i}:00`);
-  
-  // Los eventos con días en inglés
-  events = [
-    { day: 'Monday', startHour: 8, duration: 3, title: 'Class A' },
-    // Otros eventos aquí
-  ];
+  weekDays: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];  
+  hours: number[] = Array.from({ length: 24 }, (_, i) => i);
 
-  // Método para convertir el día en inglés a su índice correspondiente
-  translateDayToIndex(day: string): number {
-    const daysInSpanish = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-    const daysInEnglish = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    return daysInSpanish.indexOf(day) + 1; // El +1 es para ignorar el primer valor "Horas"
-  }
-}
+  @Input() events: DataCalendar[] = [];
+
+  /* events: Event[] = [  
+    { day: 2, startHour: 8, durationHour: 3, durationDay: 0, title: 'Clase A', color: 'red' },  
+    { day: 4, startHour: 14, durationHour: 1, durationDay: 2, title: 'Clase B', color: 'pink' },  
+   
+  ]; */ 
+
+  getColor(color: string) {  
+    return { 'background-color': color };
+  }  
+}  

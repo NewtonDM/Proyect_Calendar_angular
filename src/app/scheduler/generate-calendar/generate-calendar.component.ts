@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import swal from "sweetalert2";
-import PerfectScrollbar from "perfect-scrollbar";
-
-
-declare const $: any;
+import { Router } from "@angular/router";
+import { DataGenes, ScheduleCalendarModel } from "src/app/models/scheduler-calendar.model";
+import { SharedDataService } from "src/app/subjects/shared-data.service";
 
 @Component({
   selector: "app-calendar-cmp",
@@ -611,183 +609,41 @@ export class GenerateCalendarComponent implements OnInit {
     ],
   };
   editable = true;
-  updatedEvents = [];
-  viewDate: Date = new Date();
+  currentSalonIndex = 0;
+  receivedElement: DataGenes[] = []
 
-  data = [
-    { id: 1, dia: 1, hora: 8, profesor: 1, curso: 1, salon: 1, activo: 1 },  // Lunes 8:00 - 11:00
-    { id: 2, dia: 1, hora: 14, profesor: 2, curso: 2, salon: 2, activo: 1 }, // Lunes 14:00 - 17:00
-    { id: 3, dia: 2, hora: 10, profesor: 3, curso: 3, salon: 3, activo: 1 }, // Martes 10:00 - 13:00
-    { id: 4, dia: 2, hora: 16, profesor: 4, curso: 4, salon: 1, activo: 1 }, // Martes 16:00 - 19:00
-    { id: 5, dia: 3, hora: 9, profesor: 5, curso: 5, salon: 2, activo: 1 },  // Miércoles 9:00 - 12:00
-    { id: 6, dia: 3, hora: 13, profesor: 6, curso: 6, salon: 3, activo: 1 }, // Miércoles 13:00 - 16:00
-    { id: 7, dia: 4, hora: 11, profesor: 7, curso: 7, salon: 1, activo: 1 }, // Jueves 11:00 - 14:00
-    { id: 8, dia: 4, hora: 17, profesor: 1, curso: 1, salon: 2, activo: 1 }, // Jueves 17:00 - 20:00
-    { id: 9, dia: 5, hora: 8, profesor: 2, curso: 2, salon: 3, activo: 1 },  // Viernes 8:00 - 11:00
-    { id: 10, dia: 5, hora: 15, profesor: 3, curso: 3, salon: 1, activo: 1 },// Viernes 15:00 - 18:00
-    { id: 11, dia: 6, hora: 10, profesor: 4, curso: 4, salon: 2, activo: 1 },// Sábado 10:00 - 13:00
-    { id: 12, dia: 6, hora: 14, profesor: 5, curso: 5, salon: 3, activo: 1 },// Sábado 14:00 - 17:00
-    { id: 13, dia: 7, hora: 9, profesor: 6, curso: 6, salon: 1, activo: 1 }, // Domingo 9:00 - 12:00
-    { id: 14, dia: 7, hora: 13, profesor: 7, curso: 7, salon: 2, activo: 1 },// Domingo 13:00 - 16:00
-  ];
+  constructor(private sharedDataService: SharedDataService, private router: Router){
+    const data = this.sharedDataService.getData();
+    if(data){
+      this.receivedElement = data;
+    } else {
+      this.router.navigate(['scheduler/generate'])
+    }
+  }
 
   ngOnInit() {
-   //  this.renderCalendarForSalon(1);
-  }
-
-  renderCalendarForSalon(salonId: number) {
-    const $calendar = $("#fullCalendar");
-    const today = new Date();
-
-    const salon = this.scheduleData.lbeAulas.find(
-      (a: any) => a.Id === salonId
-    );
-    const salonNombre = salon ? salon.Codigo : "Unknown Salon";
-
-    const events = this.processScheduleData(
-      this.scheduleData,
-      this.data,
-      salonId
-    );
-
-    if ($calendar.data('fullCalendar')) {
-      $calendar.fullCalendar('destroy');
-    }
-
-    if ($calendar.length) {
-      $calendar.fullCalendar({
-        timeZone: 'local',
-        viewRender: function (view: any, element: any) {
-          if (view.name !== "month") {
-            const elem = $(element).find(".fc-scroller")[0];
-            new PerfectScrollbar(elem);
-          }
-        },
-        header: {
-          left: "prev,next today",
-          center: salonNombre,
-          right: "agendaWeek",
-        },
-        defaultView: "agendaWeek",
-        defaultDate: today,
-        selectable: true,
-        selectHelper: true,
-        views: {
-          month: { // name of view
-              titleFormat: 'MMMM YYYY'
-              // other view-specific options here
-          },
-          week: {
-              titleFormat: ' MMMM D YYYY'
-          },
-          day: {
-              titleFormat: 'D MMM, YYYY'
-          }
-        },
-
-        select: function(start: any, end: any) {
-
-            // on select we show the Sweet Alert modal with an input
-            swal.fire({
-                title: 'Create an Event',
-                html: '<div class="form-group">' +
-                        '<input class="form-control" placeholder="Event Title" id="input-field">' +
-                    '</div>',
-                showCancelButton: true,
-                customClass:{
-                  confirmButton: 'btn btn-success',
-                  cancelButton: 'btn btn-danger',
-                },
-                buttonsStyling: false
-            }).then(function(result: any) {
-
-                let eventData;
-                const event_title = $('#input-field').val();
-
-                if (event_title) {
-                    eventData = {
-                        title: event_title,
-                        start: start,
-                        end: end
-                    };
-                    $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-                }
-
-                $calendar.fullCalendar('unselect');
-
-            });
-        },
-        editable: !this.editable, // Controla si es editable
-        eventLimit: true,
-        events: events,
-        eventDrop: this.updateEvent.bind(this), // Almacena cambios al mover eventos
-        eventResize: this.updateEvent.bind(this),
-        debug: true
-      });
-    }
     
   }
-  processScheduleData(scheduleData: any, inputData: any, salonId: number) {
-    const events = [];
-    const datafilter = inputData
-    .filter((entry: any) => entry.salon === salonId);
-    for (let i = 0; i < datafilter.length; i++) {
-      const entry = datafilter[i];
-      const profesor = scheduleData.lbeProfesores.find(
-        (p: any) => p.Id === entry.profesor
-      );
-      const curso = scheduleData.lbeCursos.find(
-        (c: any) => c.Id === entry.curso
-      );
-      const dia = scheduleData.lbeDias.find((d: any) => d.Id === entry.dia);
-      const aula = scheduleData.lbeAulas.find(
-        (a: any) => a.Id === entry.salon
-      );
 
-      if (profesor && curso && dia) {
-        const [year, month, day] = dia.Fecha.split("-").map(Number);
-        const startDate = new Date(year, month - 1, day, entry.hora);
-        const endDate = new Date(startDate);
-        endDate.setHours(startDate.getHours() + 3);
-        console.log("Start:", startDate.toISOString(), "End:", endDate.toISOString());
+  get currentSalon() {
+    if(!this.receivedElement || this.receivedElement.length === 0) return null;
 
-        events.push({
-          title:  `${entry.id}|${curso.Codigo} - ${profesor.Nombre} (${aula.Codigo})`,
-          start: startDate,
-          end: endDate,
-          allDay: false,
-          className: aula.isLaboratorio ? "event-lab" : "event-regular",
-          extendedProps: { entryId: entry.id },
-        });
-      }
-    }
-
-    return events;
+    return this.receivedElement[this.currentSalonIndex];
   }
 
-  updateEvent(event: any) {
-    const updatedEvent = {
-      title: event.title,
-      start: event.start.format(),
-      end: event.end.format(),
-      id: event.extendedProps?.entryId, // Asegúrate de que 'entryId' exista
-    };
-  
-    if (!updatedEvent.id) {
-      console.error("Error: event ID is missing!", updatedEvent);
-      return;
-    }
-  
-    const existingEventIndex = this.updatedEvents.findIndex(
-      (e) => e.id === updatedEvent.id
-    );
-  
-    if (existingEventIndex > -1) {
-      this.updatedEvents[existingEventIndex] = updatedEvent;
+  nextSalon() {
+    if (this.currentSalonIndex < this.receivedElement.length - 1) {
+      this.currentSalonIndex++;
     } else {
-      this.updatedEvents.push(updatedEvent);
+      this.currentSalonIndex = 0;
     }
+  }
   
-    console.log("Updated events:", this.updatedEvents);
+  prevSalon() {
+    if (this.currentSalonIndex > 0) {
+      this.currentSalonIndex--;
+    } else {
+      this.currentSalonIndex = this.receivedElement.length - 1;
+    }
   }
 }

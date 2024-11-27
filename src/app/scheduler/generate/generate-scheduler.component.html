@@ -6,7 +6,7 @@
           <mat-toolbar color="primary" style="justify-content: space-between;">
               <span>Generación de horarios</span>
               <span class="spacer"></span>
-              <button (click)="openCalendar()" mat-raised-button color="warn">Generar Horarios</button>
+              <button mat-raised-button color="warn">Generar Horarios</button>
             </mat-toolbar>
             
             <div class="table-container m-3">
@@ -54,8 +54,8 @@
                 <ng-container matColumnDef="actions">
                   <th mat-header-cell *matHeaderCellDef> DETALLE </th>
                   <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button color="accent"><mat-icon>search</mat-icon></button>
+                    <button mat-icon-button color="primary" (click)="openCalendar(element)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="accent" (click)="openCalendar(element)"><mat-icon>search</mat-icon></button>
                   </td>
                 </ng-container>
             
