@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 
@@ -7,14 +7,15 @@ import { MatTableDataSource } from "@angular/material/table";
     templateUrl: "classrooms.component.html",
     styleUrls: ["classrooms.component.scss"]
 })
-export class ClassroomsComponent {
+export class ClassroomsComponent implements AfterViewInit {
+
     displayedColumns: string[] = ['id', 'codigo', 'descripcion', 'capacidad', 'esLaboratorio', 'estado'];
     dataSource = new MatTableDataSource<Classroom>(ELEMENT_DATA);
     searchValue: string = '';
   
     @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-    ngOnInit() {
+    ngAfterViewInit(): void {
       this.dataSource.paginator = this.paginator;
     }
   
@@ -45,6 +46,12 @@ export class ClassroomsComponent {
     { id: 1, codigo: 'A101', descripcion: 'Aula principal', capacidad: 30, esLaboratorio: false, estado: true },
     { id: 2, codigo: 'L202', descripcion: 'Laboratorio de computación', capacidad: 25, esLaboratorio: true, estado: true },
     { id: 3, codigo: 'B303', descripcion: 'Aula de biología', capacidad: 20, esLaboratorio: true, estado: false },
+    { id: 4, codigo: 'A101', descripcion: 'Aula principal', capacidad: 30, esLaboratorio: false, estado: true },
+    { id: 5, codigo: 'L202', descripcion: 'Laboratorio de computación', capacidad: 25, esLaboratorio: true, estado: true },
+    { id: 6, codigo: 'B303', descripcion: 'Aula de biología', capacidad: 20, esLaboratorio: true, estado: false },
+    { id: 7, codigo: 'A101', descripcion: 'Aula principal', capacidad: 30, esLaboratorio: false, estado: true },
+    { id: 8, codigo: 'L202', descripcion: 'Laboratorio de computación', capacidad: 25, esLaboratorio: true, estado: true },
+    { id: 9, codigo: 'B303', descripcion: 'Aula de biología', capacidad: 20, esLaboratorio: true, estado: false },
     // Agrega más datos aquí
   ];
   
