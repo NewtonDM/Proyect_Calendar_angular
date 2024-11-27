@@ -12,3 +12,22 @@
     width: 100%;
   }
   
+  .no-data-message {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 20px;
+  }
+
+  .error-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+  

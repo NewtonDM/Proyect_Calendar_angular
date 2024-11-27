@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './salones-modal.component.html',
   styleUrls: ['./salones-modal.component.css']
 })
+
 export class SalonesModalComponent {
   salones = [
     { id: 1, name: 'Salón A', capacity: 30, selected: false },
@@ -14,6 +15,7 @@ export class SalonesModalComponent {
     { id: 4, name: 'Salón D', capacity: 40, selected: false },
     { id: 5, name: 'Salón E', capacity: 60, selected: false }
   ]; // Datos simulados para los salones
+
 
   constructor(
     public dialogRef: MatDialogRef<SalonesModalComponent>,

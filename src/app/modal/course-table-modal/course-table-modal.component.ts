@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CourseSelectorModalComponent } from '../course-selector-modal/course-selector-modal.component';
+import { CursosService } from 'src/app/services/cursos.service';
+import { Course } from 'src/app/interfaces/sistema';
 
 @Component({
   selector: 'app-course-table-modal',
@@ -12,8 +14,13 @@ export class CourseTableModalComponent {
   displayedColumns: string[] = ['id', 'codigo', 'descripcion', 'horaSem'];
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,    
     public currentDialogRef: MatDialogRef<CourseTableModalComponent>,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog,
+    private cursoService : CursosService) {
+        let idProfesor = data.profesorId; 
+        this.cargarCursosByProfesor(idProfesor); 
+    }
 
   // Abrir el modal de selección de cursos
   openCourseSelector(): void {
@@ -38,12 +45,18 @@ export class CourseTableModalComponent {
     this.selectedCourses = [];
     this.currentDialogRef.close();
   }
-}
 
-// Interfaz para los datos de curso
-interface Course {
-  id: number;
-  codigo: string;
-  descripcion: string;
-  horaSemanal: number;
+  cargarCursosByProfesor(idProfesor){            
+    this.cursoService.getCursosByProfesor(idProfesor).subscribe({        
+      next: (response) => {          
+        if (response.issuccess) {                       
+          this.selectedCourses = response.data;   
+        } else{
+          //this.dataSource.data = [];
+        }
+      }, 
+      error: (err) => {          
+      }
+    });
+  }
 }

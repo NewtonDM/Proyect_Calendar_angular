@@ -42,18 +42,28 @@
 
                         <ng-container matColumnDef="esLaboratorio">
                             <th mat-header-cell *matHeaderCellDef> Es Laboratorio </th>
-                            <td mat-cell *matCellDef="let element"> {{element.esLaboratorio ? 'Sí' : 'No'}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.esLaboratorio}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="estado">
                             <th mat-header-cell *matHeaderCellDef> Estado </th>
-                            <td mat-cell *matCellDef="let element"> {{element.estado ? 'Activo' : 'Inactivo'}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.esActivo}} </td>
                         </ng-container>
 
                         <!-- Encabezado y filas -->
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
+
+                    <!-- Mensaje cuando no hay datos -->
+                    <div *ngIf="dataSource.data.length === 0 && !errorMessage" class="no-data-message">
+                        No hay datos disponibles.
+                    </div>
+                      
+                    <!-- Mensaje de error -->
+                    <div *ngIf="errorMessage" class="error-message">
+                        {{ errorMessage }}
+                    </div>
 
                     <!-- Paginador -->
                     <mat-paginator [pageSizeOptions]="[7]" [pageSize]="7" showFirstLastButtons></mat-paginator>
