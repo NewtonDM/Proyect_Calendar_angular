@@ -3,11 +3,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card ">
-
                     <mat-toolbar color="primary" style="justify-content: space-between;">
                         <span>Buscador Aulas</span>
                         <span class="spacer"></span>
-                      </mat-toolbar>
+                    </mat-toolbar>
 
                     <mat-form-field appearance="outline" class="search-field">
                         <mat-label>Buscar</mat-label>
@@ -16,7 +15,7 @@
                             <mat-icon>close</mat-icon>
                         </button>
                     </mat-form-field>
-                        <div class="table-container">
+                    <div class="table-container">
                         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                             <!-- Columnas definidas -->
@@ -54,20 +53,20 @@
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                         </table>
-
-                        <!-- Mensaje cuando no hay datos -->
-                        <div *ngIf="dataSource.data.length === 0 && !errorMessage" class="no-data-message">
-                            No hay datos disponibles.
-                        </div>
-                        
-                        <!-- Mensaje de error -->
-                        <div *ngIf="errorMessage" class="error-message">
-                            {{ errorMessage }}
-                        </div>
-
-                        <!-- Paginador -->
-                        <mat-paginator [pageSizeOptions]="[6]" [pageSize]="6" showFirstLastButtons></mat-paginator>
                     </div>
+
+                    <!-- Mensaje cuando no hay datos -->
+                    <div *ngIf="dataSource.data.length === 0 && !errorMessage" class="no-data-message">
+                        No hay datos disponibles.
+                    </div>
+                    
+                    <!-- Mensaje de error -->
+                    <div *ngIf="errorMessage" class="error-message">
+                        {{ errorMessage }}
+                    </div>
+
+                    <!-- Paginador -->
+                    <mat-paginator [pageSizeOptions]="[6]" [pageSize]="6" showFirstLastButtons></mat-paginator>
                 </div>
             </div>
         </div>
