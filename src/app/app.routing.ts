@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
+import { QueriesModule } from './queries/queries.module';
 
 export const AppRoutes: Routes = [
     {
@@ -18,6 +19,10 @@ export const AppRoutes: Routes = [
     }, {
         path: 'components',
         loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
+    },
+    {
+        path: 'queries',
+        loadChildren: () => import('./queries/queries.module').then(m => m.QueriesModule)
     },{
         path: 'scheduler',
         loadChildren: () => import('./scheduler/scheduler.module').then(m => m.SchedulerModule)

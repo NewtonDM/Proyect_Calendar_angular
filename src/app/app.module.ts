@@ -47,7 +47,6 @@ import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 import { AppRoutes } from './app.routing';
-
 @NgModule({
   exports: [
     MatAutocompleteModule,

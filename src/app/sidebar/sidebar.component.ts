@@ -23,7 +23,7 @@ export interface ChildrenItems {
 //Menu Items
 export const ROUTES: RouteInfo[] = [{
         path: '/dashboard',
-        title: 'Dashboard',
+        title: 'Inicio',
         type: 'link',
         icontype: 'dashboard'
     }/*{
@@ -42,6 +42,18 @@ export const ROUTES: RouteInfo[] = [{
             {path: 'typography', title: 'Typography', ab:'T'}
         ]
     }*/,
+   {
+        path: '/queries',
+        title: 'Consultas',
+        type: 'sub',
+        icontype: 'grid_on',
+        collapse: 'queries',
+        children: [
+            {path: 'classrooms', title: 'Aulas', ab: 'A'},
+            {path: 'teachers', title: 'Profesores', ab: 'P'},
+            {path: 'courses', title: 'Cursos', ab: 'C'}
+        ]
+    },
     {
         path: '/scheduler',
         title: 'Simulador',
@@ -98,12 +110,12 @@ export const ROUTES: RouteInfo[] = [{
         type: 'link',
         icontype: 'timeline'
 
-    }*/,{
+    },{
         path: '/calendar',
         title: 'Calendar',
         type: 'link',
         icontype: 'date_range'
-    }/*,{
+    },{
         path: '/pages',
         title: 'Pages',
         type: 'sub',

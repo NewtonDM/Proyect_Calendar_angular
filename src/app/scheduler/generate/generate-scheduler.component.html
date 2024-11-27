@@ -8,6 +8,58 @@
               <span class="spacer"></span>
               <button mat-raised-button color="warn">Generar Horarios</button>
             </mat-toolbar>
+
+            <mat-expansion-panel class="search-filters-panel">
+              <mat-expansion-panel-header>
+                <mat-panel-title>Filtros de búsqueda</mat-panel-title>
+              </mat-expansion-panel-header>
+  
+              <!-- Filtros en dos columnas -->
+              <div class="search-filters">
+                <div class="filter-column">
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Seleccion de horarios</mat-label>
+                    <input matInput placeholder="Buscar horario" (click)="openModal('horarios')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Seleccion de docentes</mat-label>
+                    <input matInput placeholder="Buscar docente" (click)="openModal('docentes')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Seleccion de salones</mat-label>
+                    <input matInput placeholder="Buscar salón" (click)="openModal('salones')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Seleccion de periodos de tiempo</mat-label>
+                    <input matInput placeholder="Buscar periodo" (click)="openModal('periodostiempo')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Seleccion de restricciones</mat-label>
+                    <input matInput placeholder="Buscar restricción" (click)="openModal('restricciones')"/>
+                  </mat-form-field>
+                </div>
+  
+                <div class="filter-column">
+                  
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Sede</mat-label>
+                    <input matInput placeholder="Buscar sede" (click)="openModal('sedes')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Carrera</mat-label>
+                    <input matInput placeholder="Buscar carrera" (click)="openModal('carreras')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Periodo</mat-label>
+                    <input matInput placeholder="Buscar periodo" (click)="openModal('periodos')"/>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Turno</mat-label>
+                    <input matInput placeholder="Buscar turno" (click)="openModal('turnos')"/>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-expansion-panel>
             
             <div class="table-container m-3">
               <mat-form-field appearance="outline" class="search-field">
@@ -54,8 +106,15 @@
                 <ng-container matColumnDef="actions">
                   <th mat-header-cell *matHeaderCellDef> DETALLE </th>
                   <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="primary" (click)="openCalendar(element)"><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button color="accent" (click)="openCalendar(element)"><mat-icon>search</mat-icon></button>
+                    <button mat-icon-button color="primary" (click)="openCalendar(element)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="openCalendar(element)">
+                      <mat-icon>search</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="downloadElement(element)">
+                      <mat-icon>download</mat-icon>
+                    </button>
                   </td>
                 </ng-container>
             

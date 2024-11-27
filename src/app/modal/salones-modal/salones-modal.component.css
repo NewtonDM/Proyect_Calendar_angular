@@ -1,0 +1,71 @@
+.modal-content {
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .close-button {
+    color: #666;
+  }
+  
+  .horarios-list {
+    margin-top: 20px;
+  }
+  
+  mat-list-item {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  mat-list-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .selected {
+    background-color: #e0f7fa;
+    border-left: 5px solid #00bcd4;
+  }
+  
+  .time-info {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    width: 48%;
+  }
+  
+  button.mat-raised-button {
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  button.mat-raised-button[color="primary"] {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  button.mat-raised-button[color="accent"] {
+    background-color: #00bcd4;
+    color: white;
+  }
+  

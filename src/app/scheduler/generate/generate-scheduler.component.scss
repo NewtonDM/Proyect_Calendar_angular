@@ -1,0 +1,43 @@
+.search-filters-panel {
+    margin-bottom: 15px;
+  }
+  
+  .search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .filter-column {
+    flex: 1 1 45%; /* Crea columnas flexibles de 2 */
+    min-width: 300px; /* Evita que las columnas se vuelvan demasiado pequeñas */
+  }
+  
+  .search-field {
+    width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+  }
+  
+  /* Estilo para los botones y la expansión */
+  .mat-expansion-panel-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #4caf50; /* Color primario */
+  }
+  
+  .mat-expansion-panel-body {
+    padding: 15px;
+  }
+  
+  .mat-form-field {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para las filas de la tabla */
+  .mat-header-cell {
+    background-color: #e0e0e0;
+  }
+  
+  .mat-cell {
+    padding: 8px;
+  }
+  

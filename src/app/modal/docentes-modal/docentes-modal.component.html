@@ -1,0 +1,28 @@
+<mat-dialog-content class="modal-content">
+    <div class="modal-header">
+      <h2>Selecciona un Docente</h2>
+      <button mat-icon-button (click)="closeDialog()" class="close-button" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <!-- Lista de Docentes -->
+    <div class="docentes-list">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let docente of docentes" (click)="toggleSelection(docente)" [ngClass]="{'selected': docente.selected}">
+            <div style="display: flex;">
+                 <mat-icon mat-list-icon>person</mat-icon>
+          <div mat-line>{{ docente.name }}</div>
+          <div mat-line class="subject-info">{{ docente.subject }}</div>
+            </div>
+           
+        </mat-list-item>
+      </mat-list>
+    </div>
+  
+    <div class="modal-footer">
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+      <button mat-raised-button color="accent" (click)="applySelection()">Aplicar</button>
+    </div>
+  </mat-dialog-content>
+  

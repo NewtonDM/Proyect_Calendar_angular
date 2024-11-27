@@ -4,5 +4,7 @@ export interface DataCalendar {
     durationHour: number;  
     durationDay: number,
     title: string;
+    description: string;
+    horario: string;
     color: string; 
   }  

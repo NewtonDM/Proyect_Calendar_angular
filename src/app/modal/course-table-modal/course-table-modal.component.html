@@ -1,0 +1,48 @@
+<h2 class="modal-title">Cursos a Dictar</h2>
+<div mat-dialog-content class="modal-content">
+    <div class="controls">
+        <button mat-icon-button color="primary" (click)="saveCourses()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="clearSelection()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="openCourseSelector()">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </div>
+      
+      <!-- Tabla de cursos seleccionados -->
+      <table mat-table [dataSource]="selectedCourses" class="mat-elevation-z8" *ngIf="selectedCourses.length > 0">
+      
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let course"> {{course.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Código </th>
+          <td mat-cell *matCellDef="let course"> {{course.codigo}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let course"> {{course.descripcion}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="horaSem">
+          <th mat-header-cell *matHeaderCellDef> Hora Sem </th>
+          <td mat-cell *matCellDef="let course"> {{course.horaSemanal}} </td>
+        </ng-container>
+      
+        <!-- Fila de cabecera y de datos -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      
+<!-- Mensaje cuando no hay cursos seleccionados -->
+<p *ngIf="selectedCourses.length === 0" class="no-courses">No hay cursos seleccionados.</p>
+</div>
+
+

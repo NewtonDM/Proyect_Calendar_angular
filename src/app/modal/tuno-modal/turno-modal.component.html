@@ -1,0 +1,28 @@
+<mat-dialog-content class="modal-content">
+    <div class="modal-header">
+      <h2>Selecciona un Turno</h2>
+      <button mat-icon-button (click)="closeDialog()" class="close-button" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <!-- Lista de Turnos -->
+    <div class="turnos-list">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let turno of turnos" (click)="toggleSelection(turno)" [ngClass]="{'selected': turno.selected}">
+          <div style="display: flex;">
+                      <mat-icon mat-list-icon>access_time</mat-icon>
+          <div mat-line>{{ turno.name }}</div>
+          <div mat-line class="time-info">{{ turno.time }}</div>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+  
+    <div class="modal-footer">
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+      <button mat-raised-button color="accent" (click)="applySelection()">Aplicar</button>
+    </div>
+  </mat-dialog-content>
+  

@@ -1,0 +1,28 @@
+<mat-dialog-content class="modal-content">
+    <div class="modal-header">
+      <h2>Selecciona un Salón</h2>
+      <button mat-icon-button (click)="closeDialog()" class="close-button" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <!-- Lista de Salones -->
+    <div class="salones-list">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let salon of salones" (click)="toggleSelection(salon)" [ngClass]="{'selected': salon.selected}">
+            <div style="display: flex;">
+                  <mat-icon mat-list-icon>room</mat-icon>
+          <div mat-line>{{ salon.name }}</div>
+          <div mat-line class="room-info">{{ salon.capacity }} personas</div>
+            </div>
+          
+        </mat-list-item>
+      </mat-list>
+    </div>
+  
+    <div class="modal-footer">
+      <button mat-raised-button color="primary" (click)="closeDialog()">Cancelar</button>
+      <button mat-raised-button color="accent" (click)="applySelection()">Aplicar</button>
+    </div>
+  </mat-dialog-content>
+  

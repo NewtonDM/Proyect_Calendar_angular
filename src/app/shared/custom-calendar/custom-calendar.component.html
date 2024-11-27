@@ -19,7 +19,9 @@
          [style.gridColumnEnd]="event.day + 1 + (event.durationDay > 1 ? event.durationDay : 1)"
          [style.gridRowStart]="event.startHour + 1"
          [style.gridRowEnd]="event.startHour + event.durationHour + 1">  
-      {{ event.title }}  
+      {{ event.title }} <br>
+      {{ event.description }} <br>
+      {{ event.horario }}
     </div>  
   </div>  
 </div>
