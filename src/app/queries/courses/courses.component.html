@@ -1,4 +1,4 @@
-<div class="main-content" style="margin-top: 40px;padding: 0px 15px 0 15px;min-height: calc(93vh - 123px);">
+<div class="main-content" style="margin-top: 40px; padding: 0px 15px 0 15px; min-height: calc(93vh - 123px);">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -16,7 +16,8 @@
                         </button>
                     </mat-form-field>
 
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <div class="table-container">
+                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                         <!-- Columnas definidas -->
                         <ng-container matColumnDef="id">
@@ -52,7 +53,9 @@
                         <!-- Encabezado y filas -->
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    </table>
+                      </table>
+                    </div>
+                    
 
                     <!-- Mensaje cuando no hay datos -->
                     <div *ngIf="dataSource.data.length === 0 && !errorMessage" class="no-data-message">
@@ -69,6 +72,12 @@
 
                 </div>
             </div>
+  
+            <!-- Paginador -->
+            <mat-paginator [pageSizeOptions]="[6]" [pageSize]="6" showFirstLastButtons></mat-paginator>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  

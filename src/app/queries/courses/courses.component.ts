@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { Course } from 'src/app/interfaces/sistema';
 import { CursosService } from "src/app/services/cursos.service";
 
 @Component({
-    selector: "app-courses",
-    templateUrl: "courses.component.html",
-    styleUrls: ["courses.component.scss"]
+  selector: "app-courses",
+  templateUrl: "courses.component.html",
+  styleUrls: ["courses.component.scss"]
 })
 export class CoursesComponent implements OnInit {
   cursos: Course []= [];
@@ -39,6 +39,11 @@ export class CoursesComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.searchValue = filterValue;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    // Resetear la página después de aplicar el filtro
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   clearSearch() {

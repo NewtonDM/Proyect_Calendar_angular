@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
@@ -48,11 +48,17 @@ export class TeachersComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.searchValue = filterValue;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    // Resetear la página después de aplicar el filtro
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   clearSearch() {
     this.searchValue = '';
     this.dataSource.filter = '';
+    this.dataSource.paginator.firstPage(); 
   }
 
   viewDetails(element: any) {

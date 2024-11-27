@@ -21,6 +21,7 @@ import { SedeModalComponent } from '../modal/sede-modal/sede-modal.component';
 import { CarreraModalComponent } from '../modal/carrera-modal/carrera-modal.component';
 import { PeriodoModalComponent } from '../modal/periodo-modal/periodo-modal.component';
 import { TurnoModalComponent } from '../modal/tuno-modal/turno-modal.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { TurnoModalComponent } from '../modal/tuno-modal/turno-modal.component';
     TagInputModule,
     MaterialModule,
     MatFormFieldModule,
+    DragDropModule,
   ],
   declarations: [
     GenerateSchedulerComponent,

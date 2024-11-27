@@ -44,6 +44,7 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedpluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutes } from './app.routing';
 @NgModule({
@@ -91,7 +92,6 @@ export class MaterialModule {}
           useHash: true
         }),
         HttpClientModule,
-
         MaterialModule,
         SidebarModule,
         NavbarModule,
