@@ -36,6 +36,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { AppComponent } from './app.component';
 
 import { SidebarModule } from './sidebar/sidebar.module';
@@ -47,6 +49,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutes } from './app.routing';
+
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -79,6 +82,10 @@ import { AppRoutes } from './app.routing';
     MatToolbarModule,
     MatTooltipModule,
     MatNativeDateModule,
+    MatFormFieldModule
+  ],
+  declarations: [
+    
   ]
 })
 export class MaterialModule {}
@@ -87,6 +94,7 @@ export class MaterialModule {}
     imports:      [
         CommonModule,
         BrowserAnimationsModule,
+        MatFormFieldModule,
         FormsModule,
         RouterModule.forRoot(AppRoutes,{
           useHash: true

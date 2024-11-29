@@ -9,7 +9,7 @@ import { DataCalendar } from 'src/app/models/data-calendar.model';
 })
 export class CustomCalendarComponent {
   weekDays: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-  hours: number[] = Array.from({ length: 24 }, (_, i) => i);
+  hours: number[] = Array.from({ length: 12 }, (_, i) => i+9);
 
   constructor(private cdRef: ChangeDetectorRef){}
   @Input() dragEnabled: boolean = false;
@@ -17,7 +17,7 @@ export class CustomCalendarComponent {
   @Output() eventUpdated: EventEmitter<DataCalendar> = new EventEmitter<DataCalendar>(); 
 
   getColor(color: string) {
-    return { 'background-color': color };
+    return { 'background-color': color, 'color':'black'};
   }
 
   onDragEnded(event: CdkDragEnd, draggedEvent: any, calendarBody: HTMLElement): void {

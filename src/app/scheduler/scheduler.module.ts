@@ -23,6 +23,7 @@ import { PeriodoModalComponent } from '../modal/periodo-modal/periodo-modal.comp
 import { TurnoModalComponent } from '../modal/tuno-modal/turno-modal.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+
 @NgModule({
   imports: [
     CommonModule,

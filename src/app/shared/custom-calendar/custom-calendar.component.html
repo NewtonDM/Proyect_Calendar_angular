@@ -15,7 +15,7 @@
     <div *ngFor="let event of events"  
          class="calendar-event"
          cdkDrag
-         [ngStyle]="getColor(event.color)" 
+         [ngStyle]="getColor(event.color)"              
          [style.gridColumnStart]="event.day + 1"
          [style.gridColumnEnd]="event.day + 1 + (event.durationDay > 1 ? event.durationDay : 1)"
          [style.gridRowStart]="event.startHour + 1"
@@ -23,7 +23,7 @@
          (cdkDragEnded)="onDragEnded($event, event, calendarBody)">  
       {{ event.title }} <br>
       {{ event.description }} <br>
-      {{ event.horario }}
+      <!--{{ event.horario }}-->
     </div>  
   </div>  
 </div>

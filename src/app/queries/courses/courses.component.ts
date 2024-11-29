@@ -19,8 +19,6 @@ export class CoursesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private cursoService : CursosService){ }
-
-
   ngOnInit() {
     this.cargarCursos(); 
     this.dataSource.paginator = this.paginator;

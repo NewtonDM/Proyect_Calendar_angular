@@ -12,6 +12,8 @@ import { CourseSelectorModalComponent } from "../modal/course-selector-modal/cou
 import { CourseTableModalComponent } from "../modal/course-table-modal/course-table-modal.component";
 import { ScheduleModalComponent } from "../modal/schedule-modal/schedule-modal.component";
 import { ScheduleSelectionModalComponent } from "../modal/schedule-selection-modal/schedule-selection-modal.component";
+import { SchedulesComponent } from './schedules/schedules.component';
+import { RegistroModalComponent } from '../modal/registro-modal/registro-modal.component';
 
 @NgModule({
     imports: [
@@ -29,7 +31,9 @@ import { ScheduleSelectionModalComponent } from "../modal/schedule-selection-mod
         CourseTableModalComponent,
         CourseSelectorModalComponent,
         ScheduleModalComponent,
-        ScheduleSelectionModalComponent
+        ScheduleSelectionModalComponent,        
+        SchedulesComponent,
+        RegistroModalComponent
     ],
 }) 
 

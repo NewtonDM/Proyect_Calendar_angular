@@ -51,7 +51,8 @@ export const ROUTES: RouteInfo[] = [{
         children: [
             {path: 'classrooms', title: 'Aulas', ab: 'A'},
             {path: 'teachers', title: 'Profesores', ab: 'P'},
-            {path: 'courses', title: 'Cursos', ab: 'C'}
+            {path: 'courses', title: 'Cursos', ab: 'C'},
+            {path: 'schedules', title: 'Horarios', ab: 'H'}
         ]
     },
     {

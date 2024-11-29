@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { ClassroomsComponent } from "./classrooms/classrooms.component";
 import { TeachersComponent } from "./teachers/teachers.component";
 import { CoursesComponent } from './courses/courses.component';
+import { SchedulesComponent } from "./schedules/schedules.component";
 
 export const QueriesRoutes: Routes= [
     {
@@ -22,6 +23,13 @@ export const QueriesRoutes: Routes= [
         children: [ {
           path: 'courses',
           component: CoursesComponent
+        }]
+      },
+      {
+        path: '',
+        children: [ {
+          path: 'schedules',
+          component: SchedulesComponent
         }]
       }
 ]

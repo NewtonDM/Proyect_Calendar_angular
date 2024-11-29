@@ -1,0 +1,49 @@
+.container {
+    width: 100%;
+    margin: 20px 0;
+}
+    
+.search-field {
+    padding: 12px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+    
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+::ng-deep .nuevo-btn {
+    background-color: #ffaf49 !important; /* Verde */
+    color: white !important;
+}
+
+::ng-deep .nuevo-btn:hover {
+    background-color: #fa8100 !important; /* Verde más oscuro */
+}
+
+::ng-deep .exportar-btn {
+    background-color: #4caf50 !important; /* Azul */
+    color: white !important;
+}
+
+::ng-deep .exportar-btn:hover {
+    background-color: #45a049 !important; /* Azul más oscuro */
+}

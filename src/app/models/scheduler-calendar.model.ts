@@ -14,3 +14,8 @@ export interface ScheduleCalendarModel {
     salon: string;
     dataCalendar: DataCalendar[];
   }
+
+
+
+
+  
