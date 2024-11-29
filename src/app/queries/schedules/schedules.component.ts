@@ -61,7 +61,8 @@ export class SchedulesComponent implements OnInit{
   cargarRegistroBySede(){            
     this.registroService.getRegistrosBySede().subscribe({        
       next: (response) => {          
-        if (response.issuccess) {                       
+        if (response.issuccess) {        
+          console.log(response.data);                
           this.registros = response.data;   
           this.dataSource = new MatTableDataSource<Registro>(this.registros);
           this.dataSource.paginator = this.paginator;

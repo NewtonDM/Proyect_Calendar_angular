@@ -48,7 +48,7 @@ export interface Classroom {
     usuariocierra : string;    
     fcierre : string; 
     faprobacion : string; 
-    Estado : string; 
+    EstadoNombre : string; 
   }
 
   export interface Horario{
