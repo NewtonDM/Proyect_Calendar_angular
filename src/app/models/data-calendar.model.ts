@@ -7,4 +7,5 @@ export interface DataCalendar {
     description: string;
     horario: string;
     color: string; 
+    index: number;
   }  

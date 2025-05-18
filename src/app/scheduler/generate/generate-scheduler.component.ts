@@ -50,6 +50,36 @@ export class GenerateSchedulerComponent implements OnInit{
     private sharedDataService: SharedDataService,
     private dialog: MatDialog, 
     private horarioService : HorariosService) { 
+      const currentDataGenes = [
+      {
+        salon: 'S01', dataCalendar: [
+          { day: 2, startHour: 8, durationHour: 3, durationDay: 0, title: 'Clase A',description: 'descript', horario: '09:00', color: 'rgb(53 195 143)' },  
+          { day: 4, startHour: 14, durationHour: 1, durationDay: 2, title: 'Clase B', description: 'descript', horario: '09:00', color: '#fff' }
+        ]
+      },
+      {
+        salon: 'S02', dataCalendar: [
+          { day: 1, startHour: 8, durationHour: 3, durationDay: 0, title: 'Clase C',description: 'descript', horario: '09:00', color: 'blue' },
+          { day: 3, startHour: 12, durationHour: 2, durationDay: 0, title: 'Clase D',description: 'descript', horario: '09:00', color: 'green' }
+        ]
+      },
+      {
+        salon: 'S03', dataCalendar: [
+          { day: 5, startHour: 8, durationHour: 3, durationDay: 0, title: 'Clase E',description: 'descript', horario: '09:00', color: 'yellow' },
+          { day: 6, startHour: 15, durationHour: 1, durationDay: 0, title: 'Clase F',description: 'descript', horario: '09:00', color: 'purple' }
+        ]
+      }
+    ];
+
+    this.dataSource.data = [
+      { id: 1, idregistro: 1, periodo: '2024-1', sede: 'BREÑA', numrd: 0, numrb: 1, fitness: 90, lbeGenes: currentDataGenes },
+      { id: 2, idregistro: 2, periodo: '2024-1', sede: 'BREÑA', numrd: 0, numrb: 2, fitness: 85, lbeGenes: currentDataGenes },
+      { id: 3, idregistro: 3, periodo: '2024-1', sede: 'BREÑA', numrd: 0, numrb: 2, fitness: 85, lbeGenes: currentDataGenes },
+      { id: 4, idregistro: 4, periodo: '2024-1', sede: 'BREÑA', numrd: 0, numrb: 4, fitness: 60, lbeGenes: currentDataGenes },
+      { id: 5, idregistro: 5, periodo: '2024-1', sede: 'BREÑA', numrd: 1, numrb: 7, fitness: 30, lbeGenes: currentDataGenes },
+      { id: 6, idregistro: 6, periodo: '2024-1', sede: 'BREÑA', numrd: 1, numrb: 7, fitness: 30, lbeGenes: currentDataGenes }
+    ];
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(){

@@ -76,6 +76,7 @@ export interface Classroom {
     description: string;
     horario: string;
     color: string; 
+    index: number;
   }  
 
   // export interface HorarioDetalle{

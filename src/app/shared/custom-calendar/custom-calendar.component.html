@@ -8,22 +8,35 @@
     <div *ngFor="let hour of hours" class="calendar-row">  
       <div class="calendar-time">{{ hour }}:00</div>  
       <div *ngFor="let day of weekDays" class="calendar-cell"   
-           [attr.data-hour]="hour" [attr.data-day]="day">  
+          [attr.data-hour]="hour" [attr.data-day]="day">  
       </div>  
     </div>  
 
     <div *ngFor="let event of events"  
-         class="calendar-event"
-         cdkDrag
-         [ngStyle]="getColor(event.color)"              
-         [style.gridColumnStart]="event.day + 1"
-         [style.gridColumnEnd]="event.day + 1 + (event.durationDay > 1 ? event.durationDay : 1)"
-         [style.gridRowStart]="event.startHour + 1"
-         [style.gridRowEnd]="event.startHour + event.durationHour + 1"
-         (cdkDragEnded)="onDragEnded($event, event, calendarBody)">  
+        class="calendar-event"
+        cdkDrag
+        [ngStyle]="getColor(event.color)"              
+        [style.gridColumnStart]="event.day + 1"
+        [style.gridColumnEnd]="event.day + 1 + (event.durationDay > 1 ? event.durationDay : 1)"
+        [style.gridRowStart]="event.startHour + 1"
+        [style.gridRowEnd]="event.startHour + event.durationHour + 1"
+        (cdkDragEnded)="onDragEnded($event, event, calendarBody)"
+        (cdkDragMoved)="onDragMoved($event, event, calendarBody)"
+        [cdkDragBoundary]="'.calendar-body'">  
       {{ event.title }} <br>
       {{ event.description }} <br>
       <!--{{ event.horario }}-->
-    </div>  
+
+          </div>
+    
+    <div *ngIf="activeMove"
+        class="calendar-placeholder"
+        [ngClass]="{ 'conflict': hasCollision }"
+        [style.gridColumnStart]="this.currentPositionDay + 1"
+        [style.gridColumnEnd]="(this.currentPositionDay + 1) + currentDurationDay"
+        [style.gridRowStart]="this.currentPositionHour + 1"
+        [style.gridRowEnd]="(this.currentPositionHour + 1) + currentDurationHour">
+    </div>
+
   </div>  
 </div>
